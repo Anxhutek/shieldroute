@@ -33,14 +33,15 @@ ShieldRoute ensures that final destination URLs are never exposed in frontend sc
 ```mermaid
 sequenceDiagram
     autonumber
-    actor User as Client / Bot
-    participant S as Server (/s/:rid)
-    participant R as Redis Cache
-    participant B as Bridge (/bridge)
-    participant D as MongoDB (Analytics)
+    actor User as "Client / Bot"
+    participant S as "Server (/s/:rid)"
+    participant R as "Redis Cache"
+    participant B as "Bridge (/bridge)"
+    participant D as "MongoDB (Analytics)"
 
     User->>S: Access Protected Link (/s/:rid)
-    Note over S: Validate Request Origin<br/>(Referrer & UA Validation)
+    Note over S: Validate Request Origin 
+ (Referrer & UA Validation)
     S->>R: Generate & Store Temp Ticket (TTL 5 mins)
     S-->>User: Set Temporary Signed Session & Redirect to /bridge
     User->>B: Access Gate / Countdown Page
