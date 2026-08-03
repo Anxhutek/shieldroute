@@ -40,8 +40,7 @@ sequenceDiagram
     participant D as "MongoDB (Analytics)"
 
     User->>S: Access Protected Link (/s/:rid)
-    Note over S: Validate Request Origin 
- (Referrer & UA Validation)
+    Note over S: Validate Request Origin \n (Referrer & UA Validation)
     S->>R: Generate & Store Temp Ticket (TTL 5 mins)
     S-->>User: Set Temporary Signed Session & Redirect to /bridge
     User->>B: Access Gate / Countdown Page
